@@ -1,0 +1,41 @@
+body {
+  text-align: center;
+  background-color: #5a67b8;
+  color: white;
+  padding-top: 10px;
+  font-family: Helvetica;
+  color: white;
+}
+
+.playerScore {
+  font-size: 105px;
+  /*background-color: blue;*/
+  margin: -100px 0;
+}
+
+.playerInfo {
+  text-align: center;
+  display:inline;
+  padding:0 15%;
+  font-size: 65px;
+  /*background-color: red;*/
+  margin: 0px;
+}
+
+.score-enter {
+  opacity: 0.01;
+}
+
+.score-enter.score-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.score-leave {
+  opacity: 1;
+}
+
+.score-leave.score-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
