@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
-import $ from 'jquery';
+// import $ from 'jquery';
+import Leaders from './leaders';
+import { Link } from 'react-router';
 
-//set an interval here to check the API every second or so?
- // $.getJSON('https://example.com').then(function(data) {
- //   incrementScoreA(data.playerAScore);
- //   incrementScoreB(data.playerBScore);
- // });
+
+// let refreshScore = setInterval(function() {
+//   $.getJSON('https://example.com').then(function(data) {
+//     this.incrementScoreA(data.playerAScore);
+//     this.incrementScoreB(data.playerBScore);
+//   })
+// },1000);
 
 class App extends React.Component {
 
@@ -14,6 +18,7 @@ class App extends React.Component {
     super();
     this.incrementScoreA = this.incrementScoreA.bind(this);
     this.incrementScoreB = this.incrementScoreB.bind(this);
+    this.toggleLeaderboard = this.toggleLeaderboard.bind(this);
 
     this.state = {
       playerAName: "Mathew",
@@ -21,10 +26,10 @@ class App extends React.Component {
       playerAScore: 0,
       playerBScore: 0,
       playerAimgSrc: 'https://s3-us-west-1.amazonaws.com/personalprojectfiles/profile.jpg',
-      playerBimgSrc: 'https://s3-us-west-1.amazonaws.com/orphankittenproject/kmvernau.jpeg'
+      playerBimgSrc: 'https://s3-us-west-1.amazonaws.com/orphankittenproject/kmvernau.jpeg',
+      leaderboard: false
     }
   }
-
 
 
   incrementScoreA(newScore) {
@@ -35,14 +40,59 @@ class App extends React.Component {
     this.setState({playerBScore: newScore});
   }
 
+  toggleLeaderboard() {
+    if (this.state.leaderboard) {
+      this.setState({leaderboard:false});
+    }
+      else {
+        this.setState({leaderboard:true});
+      }
+  }
+
+
   render() {
-    return (
+
+    if (this.state.leaderboard) {
+      return (
+        <div className="App">
+          <button onClick={this.toggleLeaderboard}> Go back to score</button>
+          <h1 className='leaderboardHeader'> All time leaderboard</h1>
+            <table>
+              <tbody>
+              <tr>
+              <td>Player</td>
+              <td>Wins</td>
+              <td>Losses</td>
+              </tr>
+              <tr>
+              <td> Ruchi</td>
+              <td>4</td>
+              <td>2</td>
+              </tr>
+              <tr>
+              <td>Mathew</td>
+              <td>3</td>
+              <td>3</td>
+              </tr>
+              <tr>
+              <td>Alex</td>
+              <td>1</td>
+              <td>5</td>
+              </tr>
+              </tbody>
+            </table>
+        </div>
+      )
+    }  else return (
       <div className="App">
+        <button onClick={this.toggleLeaderboard}>See Leaderboard</button>
+
+
         <div className="playerScore">
           <h1>
-            <span className="scoreNum">{this.state.playerAScore}</span>
+            <span className="scoreNum" id="scoreA" onClick={this.incrementScoreA}>{this.state.playerAScore}</span>
               :
-            <span className="scoreNum">{this.state.playerBScore}</span>
+            <span className="scoreNum" id="scoreB">{this.state.playerBScore}</span>
 
           </h1>
         </div>
