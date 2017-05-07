@@ -15,11 +15,18 @@ body {
 
 .playerInfo {
   text-align: center;
-  display:inline;
+  display:inline-block;;
   padding:0 15%;
   font-size: 65px;
   /*background-color: red;*/
   margin: 0px;
+}
+
+.playerInfo img {
+  display:inline;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
 }
 
 .score-enter {

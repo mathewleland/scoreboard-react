@@ -3,10 +3,10 @@ import './App.css';
 import $ from 'jquery';
 
 //set an interval here to check the API every second or so?
- $.getJSON('https://example.com').then(function(data) {
-   App.incrementScoreA(data.playerAScore);
-   App.incrementScoreB(data.playerBScore);
- });
+ // $.getJSON('https://example.com').then(function(data) {
+ //   incrementScoreA(data.playerAScore);
+ //   incrementScoreB(data.playerBScore);
+ // });
 
 class App extends React.Component {
 
@@ -20,8 +20,8 @@ class App extends React.Component {
       playerBName: "Alex",
       playerAScore: 0,
       playerBScore: 0,
-      playerAimgSrc: '',
-      playerBimgSrc: ''
+      playerAimgSrc: 'https://s3-us-west-1.amazonaws.com/personalprojectfiles/profile.jpg',
+      playerBimgSrc: 'https://s3-us-west-1.amazonaws.com/orphankittenproject/kmvernau.jpeg'
     }
   }
 
@@ -50,9 +50,13 @@ class App extends React.Component {
 
         <div className='playerInfo'>
           {this.state.playerAName}
+          <br/>
+          <img src={this.state.playerAimgSrc}></img>
         </div>
         <div className='playerInfo'>
           {this.state.playerBName}
+          <br/>
+          <img src={this.state.playerBimgSrc}></img>
         </div>
       </div>
     );
