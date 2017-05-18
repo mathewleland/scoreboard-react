@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 // import $ from 'jquery';
-import Leaders from './leaders';
-import { Link } from 'react-router';
+// import Leaders from './leaders';
+// import { Link } from 'react-router';
 
 
 // let refreshScore = setInterval(function() {
 //   $.getJSON('https://example.com').then(function(data) {
-//     this.incrementScoreA(data.playerAScore);
-//     this.incrementScoreB(data.playerBScore);
+//     this.updateScoreA(data.playerAScore);
+//     this.updateScoreB(data.playerBScore);
 //   })
 // },1000);
 
@@ -16,8 +16,8 @@ class App extends React.Component {
 
   constructor() {
     super();
-    this.incrementScoreA = this.incrementScoreA.bind(this);
-    this.incrementScoreB = this.incrementScoreB.bind(this);
+    this.updateScoreA = this.updateScoreA.bind(this);
+    this.updateScoreB = this.updateScoreB.bind(this);
     this.toggleLeaderboard = this.toggleLeaderboard.bind(this);
 
     this.state = {
@@ -32,11 +32,11 @@ class App extends React.Component {
   }
 
 
-  incrementScoreA(newScore) {
+  updateScoreA(newScore) {
     this.setState({playerAScore: newScore});
   }
 
-  incrementScoreB(newScore) {
+  updateScoreB(newScore) {
     this.setState({playerBScore: newScore});
   }
 
@@ -59,7 +59,7 @@ class App extends React.Component {
           <h1 className='leaderboardHeader'> All time leaderboard</h1>
             <table>
               <tbody>
-              <tr>
+              <tr className='odd'>
               <td>Player</td>
               <td>Wins</td>
               <td>Losses</td>
@@ -90,7 +90,7 @@ class App extends React.Component {
 
         <div className="playerScore">
           <h1>
-            <span className="scoreNum" id="scoreA" onClick={this.incrementScoreA}>{this.state.playerAScore}</span>
+            <span className="scoreNum" id="scoreA" onClick={this.updateScoreA}>{this.state.playerAScore}</span>
               :
             <span className="scoreNum" id="scoreB">{this.state.playerBScore}</span>
 

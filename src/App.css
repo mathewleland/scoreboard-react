@@ -55,6 +55,10 @@ table {
 table td {
   padding: 25px;
 }
+.odd {
+  background-color: lightblue;
+  color:black;
+}
 
 .leaderboardHeader {
   border: 2px white solid;
